@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <!-- Titillium Web font -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" />
+    <!-- link css -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="head">
+        <h1>Kanban Board</h1>
+    </div>
+    <div class="board">
+        <!--TODO -->
+        <div class="column" id="to-do" ondrop="drop(event,'to-do')" ondragover="allowDrop(event)">
+            <div class="column-header">
+                <h2>To-Do</h2>
+                <button id="createTaskBtn" class="create-task-btn">+ Create Task</button>
+            </div>
+            <hr />
+            <div class="task-container">
+            </div>
+        </div>
+        
+        <!--IN PROGRESS -->
+        <div class="column" id="in-progress" ondrop="drop(event,'in-progress')" ondragover="allowDrop(event)">
+            <h2>In-Progress</h2>
+            <hr />
+            <div class="task-container">
+            </div>
+        </div>
+        
+        <!-- DONE -->
+        <div class="column" id="done" ondrop="drop(event,'done')" ondragover="allowDrop(event)">
+            <h2>Done</h2>
+            <hr />
+            <div class="task-container">
+            </div>
+        </div>
+    </div>
+
+    <!-- Task Creation Modal -->
+    <div id="taskModal" class="task-modal">
+        <div class="task-modal-content">
+            <div class="modal-header">
+                <h3>Create New Task</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="modalTaskInput">Task Name:</label>
+                    <input type="text" id="modalTaskInput" class="modal-input" placeholder="Enter task name..." />
+                </div>
+                
+                <div class="form-group">
+                    <label for="modalDescriptionInput">Description:</label>
+                    <textarea id="modalDescriptionInput" class="modal-textarea" placeholder="Enter description..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="modalPriorityInput">Priority:</label>
+                    <select id="modalPriorityInput" class="modal-select">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="modalDueDateInput">Due Date:</label>
+                    <input type="date" id="modalDueDateInput" class="modal-input" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelTaskBtn" class="cancel-modal-btn">Cancel</button>
+                <button id="saveTaskBtn" class="save-modal-btn">Create Task</button>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>
